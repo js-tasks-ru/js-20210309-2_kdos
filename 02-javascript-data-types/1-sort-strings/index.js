@@ -5,5 +5,20 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-
+  return [...arr].sort((s1, s2) =>
+    param === "asc" ?
+      localeSort(s1, s2)
+      : -localeSort(s1, s2)
+  );
 }
+
+function localeSort(s1, s2) {
+  return s1.localeCompare(s2,
+    ['ru', 'en'],
+    {
+      sensitivity: 'variant',
+      caseFirst: 'upper',
+    }
+  );
+}
+
