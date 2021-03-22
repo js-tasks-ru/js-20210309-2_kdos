@@ -15,9 +15,9 @@ export function createGetter(path) {
       return;
     }
 
-    let fieldValue;
+    let fieldValue = obj;
     for (let i = 0; i < pathFields.length; i++) {
-      fieldValue = (i === 0 ? obj[pathFields[i]] : fieldValue[pathFields[i]]);
+      fieldValue = fieldValue[pathFields[i]];
       if (!fieldValue) {
         return;
       }
